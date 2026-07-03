@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adeline Shiatsu — Koho Shiatsu à Angoulême</title>
 <meta name="description" content="Adeline Shiatsu à Angoulême - Praticienne certifiée en Koho Shiatsu - Accompagnement à la santé et Energétique chinoise.">
+<link rel="icon" type="image/png" href="images/logo-empreinte.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -79,7 +80,9 @@
     font-size:1.25rem;
     font-weight:500;
     color:var(--indigo-deep);
+    display:flex; align-items:center; gap:10px;
   }
+  .brand-logo{ height:32px; width:auto; }
   .brand span{color:var(--moss); font-style:italic;}
   nav ul{
     list-style:none; display:flex; gap:30px; align-items:center;
@@ -142,7 +145,29 @@
     border-radius:var(--radius);
     position:relative; overflow:hidden;
   }
-  .hero-art svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .hero-art img{ width:100%; height:100%; object-fit:cover; opacity:0.9; }
+  .hero-art svg{ position:absolute; inset:0; width:100%; height:100%; mix-blend-mode:screen; pointer-events:none; }
+
+  /* portrait photo (À propos) */
+  .portrait{
+    width:100%; aspect-ratio:4/5; object-fit:cover;
+    border-radius:var(--radius); margin-bottom:24px;
+    border:1px solid var(--line);
+  }
+
+  /* wide banner photo inside a section */
+  .section-banner{
+    width:100%; aspect-ratio:16/7; object-fit:cover;
+    border-radius:var(--radius); margin:32px 0 40px;
+    border:1px solid var(--line);
+  }
+  .section-banner.dark{ border-color:rgba(241,236,225,0.2); }
+
+  /* partner logo in footer */
+  .partner-logo{
+    display:flex; align-items:center; gap:10px; margin-top:14px;
+  }
+  .partner-logo img{ height:22px; width:auto; filter:brightness(0) invert(1); opacity:0.7; }
 
   .keyword-belt{
     border-top:1px solid var(--line); border-bottom:1px solid var(--line);
@@ -164,11 +189,32 @@
   .section-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); margin-top:12px; }
   .section-head p{ color:var(--ink-soft); margin-top:14px; }
 
+  /* ---------- portfolio / diplômes ---------- */
+  .portfolio-subhead{
+    font-size:1rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--moss); font-weight:600; margin:36px 0 18px;
+  }
+  .portfolio-subhead:first-of-type{ margin-top:10px; }
+  .diplome-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  }
+  .diplome-grid img{
+    width:100%; aspect-ratio:3/4; object-fit:cover;
+    border-radius:var(--radius); border:1px solid var(--line);
+    background:var(--paper);
+  }
+  @media (max-width:760px){ .diplome-grid{ grid-template-columns:repeat(2,1fr); } }
+
   /* ---------- about ---------- */
   #apropos{ background:var(--paper-deep); }
   .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start; }
   .about-grid p{ color:var(--ink-soft); margin-bottom:16px; }
   .about-grid p:first-child{ font-family:'Fraunces', serif; font-size:1.2rem; color:var(--ink); font-style:italic; }
+  .apropos-gallery{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:26px; }
+  .apropos-gallery img{
+    width:100%; aspect-ratio:1/1; object-fit:cover;
+    border-radius:var(--radius); border:1px solid var(--line);
+  }
   .cert-box{
     background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
     padding:28px;
@@ -184,6 +230,11 @@
   /* ---------- prestations ---------- */
   .soins-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
   .soin-card{ background:var(--paper); padding:30px; }
+  .soin-photo{
+    width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:var(--radius); margin-bottom:18px;
+    border:1px solid var(--line);
+  }
   .soin-card .top-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:10px;}
   .soin-card h3{ font-size:1.15rem; }
   .soin-card .tarif{ font-family:'Fraunces', serif; color:var(--moss); font-style:italic; white-space:nowrap; }
@@ -275,10 +326,11 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#accueil" class="brand">Adeline <span>Shiatsu</span></a>
+    <a href="#accueil" class="brand"><img src="images/logo-empreinte.png" alt="" class="brand-logo">Adeline <span>Shiatsu</span></a>
     <button class="burger" aria-label="Ouvrir le menu" onclick="document.getElementById('navlist').classList.toggle('open')">☰</button>
     <ul id="navlist">
       <li><a href="#apropos">À propos</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#prestations">Prestations</a></li>
       <li><a href="#entreprises">Entreprises</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -300,6 +352,7 @@
       </div>
     </div>
     <div class="hero-art">
+      <img src="images/hero.jpg" alt="Séance de Koho Shiatsu, cabinet d'Adeline à Angoulême">
       <svg viewBox="0 0 400 500" preserveAspectRatio="none">
         <path d="M -10 380 C 60 340, 90 420, 150 360 S 260 260, 320 300 S 420 200, 460 160" stroke="#6E7B5C" stroke-width="1.4" fill="none" opacity="0.6"/>
         <path d="M -10 200 C 70 240, 110 140, 180 190 S 300 260, 340 190 S 430 100, 470 140" stroke="#C1815F" stroke-width="1.2" fill="none" opacity="0.45"/>
@@ -332,8 +385,13 @@
         <p>J'ai découvert le Shiatsu il y a presque 10 ans, en Dordogne. Avec des déménagements, des enfants en bas âge et mon conjoint régulièrement en déplacement, le stress se répercutait sur mon corps : sommeil compliqué, boule au ventre, l'impression de n'arriver à rien.</p>
         <p>Je me suis tournée vers le Shiatsu en intégrant pour 3 années l'école Fuji Taishan — aujourd'hui Atsuko École de Shiatsu — la même école qui avait formé la praticienne qui me suivait.</p>
         <p>Le Koho Shiatsu emprunte ses principes à la Médecine Traditionnelle Chinoise, comme l'acupuncture, reconnue par le Conseil National de l'Ordre des Médecins. Sa dimension thérapeutique permet au corps de se rééquilibrer, sur le plan physique comme émotionnel.</p>
+        <div class="apropos-gallery">
+          <img src="images/a-propos-1.jpg" alt="Adeline Bourgeois, praticienne en Koho Shiatsu">
+          <img src="images/a-propos-2.jpg" alt="Adeline Bourgeois, praticienne en Koho Shiatsu">
+        </div>
       </div>
       <div class="cert-box">
+        <img class="portrait" src="images/adeline-portrait.jpg" alt="Adeline Bourgeois, praticienne en Koho Shiatsu">
         <h3>676h de formation (3 ans)</h3>
         <ul>
           <li><b>Anatomie et Physionomie</b> — Fabienne Demillian, Infirmière, spécialiste Koho Shiatsu</li>
@@ -344,8 +402,41 @@
           <li><b>Thérapie manuelle</b> — Guillaume Reynard, Ostéopathe DO</li>
           <li><b>Heddo Massaji, Kinsey Seitei 1&2</b> — Anne Plamondon</li>
           <li><b>Massage à l'huile & ventouses</b> — Isabeau Bloy</li>
+          <li><b>Accompagnement des aidants</b> — Formation complémentaire</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO / DIPLOMES ================= -->
+<section id="portfolio" style="background:var(--paper-deep);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Portfolio</p>
+      <h2>Diplômes & formations</h2>
+      <p>Les certificats obtenus au fil de mon parcours de formation en Koho Shiatsu et Énergétique Chinoise.</p>
+    </div>
+
+    <h3 class="portfolio-subhead">Diplômes</h3>
+    <div class="diplome-grid">
+      <img src="images/portfolio/diplome-1.jpg" alt="Diplôme Koho Shiatsu">
+      <img src="images/portfolio/diplome-2.jpg" alt="Diplôme Énergétique Chinoise">
+    </div>
+
+    <h3 class="portfolio-subhead">Formations complémentaires</h3>
+    <div class="diplome-grid">
+      <img src="images/portfolio/formation-1.jpg" alt="Formation Heddo Massaji">
+      <img src="images/portfolio/formation-2.jpg" alt="Formation Kinsey Seitei">
+      <img src="images/portfolio/formation-3.jpg" alt="Formation massage à l'huile et ventouses">
+      <img src="images/portfolio/formation-4.jpg" alt="Formation Shiatsu en oncologie">
+    </div>
+
+    <h3 class="portfolio-subhead">Accompagnement des aidants</h3>
+    <div class="diplome-grid">
+      <img src="images/portfolio/aidants-1.jpg" alt="Formation accompagnement des aidants">
+      <img src="images/portfolio/aidants-2.jpg" alt="Formation accompagnement des aidants">
+      <img src="images/portfolio/aidants-3.jpg" alt="Formation accompagnement des aidants">
     </div>
   </div>
 </section>
@@ -361,36 +452,43 @@
 
     <div class="soins-grid">
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/koho-shiatsu.jpg" alt="Koho Shiatsu">
         <div class="top-row"><h3>Koho Shiatsu</h3><span class="tarif">dès 50 €</span></div>
         <p>Shiatsu thérapeutique complet.</p>
         <span class="duree">1h30</span>
       </div>
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/kinsey-seitei.jpg" alt="Kinsey Seitei">
         <div class="top-row"><h3>Kinsey Seitei</h3><span class="tarif">65 €</span></div>
         <p>Soulager les tensions liées au déséquilibre postural.</p>
         <span class="duree">1h</span>
       </div>
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/shiatsu-chaise.jpg" alt="Séance de Shiatsu sur chaise">
         <div class="top-row"><h3>Shiatsu sur chaise</h3><span class="tarif">40 €</span></div>
         <p>Idéal lorsque les minutes sont comptées.</p>
         <span class="duree">30 min</span>
       </div>
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/heddo-massaji.jpg" alt="Heddo Massaji, Shiatsu crânien">
         <div class="top-row"><h3>Heddo Massaji</h3><span class="tarif">65 €</span></div>
         <p>Shiatsu crânien — détente absolue.</p>
         <span class="duree">1h</span>
       </div>
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/massage-huile-ventouses.jpg" alt="Massage à l'huile et pose de ventouses">
         <div class="top-row"><h3>Massage à l'huile & ventouses</h3><span class="tarif">45 €</span></div>
         <p>Améliore la circulation sanguine, détend les muscles, élimine les blocages énergétiques.</p>
         <span class="duree">45 min</span>
       </div>
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/moxibustion.jpg" alt="Moxibustion">
         <div class="top-row"><h3>Moxibustion</h3><span class="tarif">selon soin</span></div>
         <p>Un duo chaleureux pour un corps plus détendu et une énergie plus fluide.</p>
         <span class="duree">15 min</span>
       </div>
       <div class="soin-card">
+        <img class="soin-photo" src="images/soins/bon-cadeau.jpg" alt="Bon cadeau Adeline Shiatsu">
         <div class="top-row"><h3>Bon cadeau</h3><span class="tarif">selon soin</span></div>
         <p>Offrez une pause ressourçante à un proche.</p>
         <span class="duree">1h</span>
@@ -410,6 +508,7 @@
       <h2>Une pause efficace pour vos équipes</h2>
       <p>Prenez soin de vos collaborateurs, ils prendront soin de votre entreprise. Favoriser la détente pour réduire le stress : une démarche QVT simple et efficace.</p>
     </div>
+    <img class="section-banner dark" src="images/massage-chaise.jpg" alt="Séance de Shiatsu sur chaise en entreprise">
     <div class="ent-grid">
       <div class="ent-card">
         <h3>Shiatsu sur chaise — 20 min</h3>
@@ -523,6 +622,10 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
       <h4>Suivre</h4>
       <p><a href="https://www.instagram.com/AdelineShiatsu16/" target="_blank" rel="noopener">Instagram</a></p>
       <p><a href="https://www.facebook.com/profile.php?id=61579917012503" target="_blank" rel="noopener">Facebook</a></p>
+      <div class="partner-logo">
+        <img src="images/logo-shiatsu-france.png" alt="Shiatsu France">
+        <a href="https://www.shiatsu-france.com/" target="_blank" rel="noopener">Shiatsu France</a>
+      </div>
     </div>
   </div>
   <div class="wrap footer-bottom">
