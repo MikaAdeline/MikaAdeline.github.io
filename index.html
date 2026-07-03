@@ -3,12 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adeline Shiatsu — Koho Shiatsu à Angoulême</title>
-<meta name="description" content="Adeline Shiatsu à Angoulême - Praticienne certifiée en Koho Shiatsu - Accompagnement à la santé et Energétique chinoise.">
+<title>Adeline Shiatsu Angoulême — Praticienne Koho Shiatsu, Massage Bien-être & Énergétique Chinoise</title>
+<meta name="description" content="Adeline Shiatsu à Angoulême (16) - Praticienne certifiée en Koho Shiatsu et Énergétique Chinoise. Shiatsu thérapeutique, massage à l'huile, Kinsey Seitei, shiatsu sur chaise en entreprise. Prenez rendez-vous au 06 83 48 47 79.">
+<meta name="keywords" content="shiatsu angoulême, koho shiatsu, praticienne shiatsu charente, massage bien-être angoulême, énergétique chinoise, shiatsu entreprise, shiatsu sur chaise, kinsey seitei, medecine traditionnelle chinoise angoulême, gestion du stress angoulême">
+<meta name="author" content="Adeline Bourgeois">
+<link rel="canonical" href="https://adelineshiatsu16.fr/">
+
+<!-- Open Graph / réseaux sociaux -->
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="Adeline Shiatsu — Praticienne Koho Shiatsu à Angoulême">
+<meta property="og:description" content="Praticienne certifiée en Koho Shiatsu et Énergétique Chinoise à Angoulême. Un véritable accompagnement à la santé, pour les particuliers comme pour les entreprises.">
+<meta property="og:image" content="https://adelineshiatsu16.fr/images/hero.jpg">
+<meta property="og:url" content="https://adelineshiatsu16.fr/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" type="image/png" href="images/logo-empreinte.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Données structurées pour Google (fiche entreprise locale) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "Adeline Shiatsu",
+  "image": "https://adelineshiatsu16.fr/images/hero.jpg",
+  "url": "https://adelineshiatsu16.fr/",
+  "telephone": "+33683484779",
+  "email": "adelineshiatsu16@gmail.com",
+  "priceRange": "40€-65€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "198 rue de Périgueux",
+    "addressLocality": "Angoulême",
+    "postalCode": "16000",
+    "addressCountry": "FR"
+  },
+  "openingHours": ["Mo-We 09:00-18:00", "Th-Fr 09:00-18:00"],
+  "sameAs": [
+    "https://www.instagram.com/AdelineShiatsu16/",
+    "https://www.facebook.com/profile.php?id=61579917012503"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Adeline Bourgeois"
+  }
+}
+</script>
 <style>
   :root{
     --paper:#F1ECE1;
@@ -82,7 +125,7 @@
     color:var(--indigo-deep);
     display:flex; align-items:center; gap:10px;
   }
-  .brand-logo{ height:32px; width:auto; }
+  .brand-logo{ height:44px; width:auto; }
   .brand span{color:var(--moss); font-style:italic;}
   nav ul{
     list-style:none; display:flex; gap:30px; align-items:center;
@@ -145,21 +188,21 @@
     border-radius:var(--radius);
     position:relative; overflow:hidden;
   }
-  .hero-art img{ width:100%; height:100%; object-fit:cover; opacity:0.9; }
+  .hero-art img{ width:100%; height:100%; object-fit:contain; opacity:0.9; }
   .hero-art svg{ position:absolute; inset:0; width:100%; height:100%; mix-blend-mode:screen; pointer-events:none; }
 
   /* portrait photo (À propos) */
   .portrait{
-    width:100%; aspect-ratio:4/5; object-fit:cover;
+    width:100%; aspect-ratio:4/5; object-fit:contain;
     border-radius:var(--radius); margin-bottom:24px;
-    border:1px solid var(--line);
+    border:1px solid var(--line); background:var(--paper-deep);
   }
 
   /* wide banner photo inside a section */
   .section-banner{
-    width:100%; aspect-ratio:16/7; object-fit:cover;
+    width:100%; aspect-ratio:16/7; object-fit:contain;
     border-radius:var(--radius); margin:32px 0 40px;
-    border:1px solid var(--line);
+    border:1px solid var(--line); background:var(--paper-deep);
   }
   .section-banner.dark{ border-color:rgba(241,236,225,0.2); }
 
@@ -199,7 +242,7 @@
     display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
   }
   .diplome-grid img{
-    width:100%; aspect-ratio:3/4; object-fit:cover;
+    width:100%; aspect-ratio:3/4; object-fit:contain;
     border-radius:var(--radius); border:1px solid var(--line);
     background:var(--paper);
   }
@@ -212,8 +255,8 @@
   .about-grid p:first-child{ font-family:'Fraunces', serif; font-size:1.2rem; color:var(--ink); font-style:italic; }
   .apropos-gallery{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:26px; }
   .apropos-gallery img{
-    width:100%; aspect-ratio:1/1; object-fit:cover;
-    border-radius:var(--radius); border:1px solid var(--line);
+    width:100%; aspect-ratio:1/1; object-fit:contain;
+    border-radius:var(--radius); border:1px solid var(--line); background:var(--paper);
   }
   .cert-box{
     background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
@@ -231,9 +274,9 @@
   .soins-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
   .soin-card{ background:var(--paper); padding:30px; }
   .soin-photo{
-    width:100%; aspect-ratio:4/3; object-fit:cover;
+    width:100%; aspect-ratio:4/3; object-fit:contain;
     border-radius:var(--radius); margin-bottom:18px;
-    border:1px solid var(--line);
+    border:1px solid var(--line); background:var(--paper-deep);
   }
   .soin-card .top-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:10px;}
   .soin-card h3{ font-size:1.15rem; }
@@ -482,7 +525,7 @@
         <span class="duree">45 min</span>
       </div>
       <div class="soin-card">
-        <img class="soin-photo" src="images/soins/moxibustion.jpg" alt="Moxibustion">
+        <img class="soin-photo" src="images/soins/moxibustion.png" alt="Moxibustion">
         <div class="top-row"><h3>Moxibustion</h3><span class="tarif">selon soin</span></div>
         <p>Un duo chaleureux pour un corps plus détendu et une énergie plus fluide.</p>
         <span class="duree">15 min</span>
