@@ -130,16 +130,16 @@
   }
   .brand-logo{ height:96px; width:auto; flex-shrink:0; }
   .brand span{color:var(--moss); font-style:italic;}
-  nav ul{
+  #navlist{
     list-style:none; display:flex; gap:2px; align-items:center; flex-wrap:nowrap;
   }
-  nav ul li a{
+  #navlist li a{
     font-size:0.88rem; color:var(--ink-soft); white-space:nowrap;
     padding:8px 12px; border-radius:20px;
     transition:background .2s, color .2s;
   }
-  nav ul li a:hover, nav ul li a:focus-visible{ color:var(--indigo); background:rgba(46,63,86,0.07); }
-  nav ul li.cta-item{ margin-left:16px; padding-left:16px; border-left:1px solid var(--line); flex-shrink:0; }
+  #navlist li a:hover, #navlist li a:focus-visible{ color:var(--indigo); background:rgba(46,63,86,0.07); }
+  #navlist li.cta-item{ margin-left:16px; padding-left:16px; border-left:1px solid var(--line); flex-shrink:0; }
   .nav-cta{
     background:var(--indigo); color:var(--paper) !important;
     padding:10px 20px !important; border-radius:24px !important;
@@ -170,7 +170,7 @@
     .nav{ height:50px; }
     .brand-logo{ height:78px; }
     .burger{display:block;}
-    nav ul{
+    #navlist{
       position:fixed; inset:0; z-index:55;
       background:var(--paper);
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -178,17 +178,17 @@
       opacity:0; visibility:hidden; transform:translateY(-8px);
       transition:opacity .28s ease, transform .28s ease, visibility 0s linear .28s;
     }
-    nav ul.open{
+    #navlist.open{
       opacity:1; visibility:visible; transform:translateY(0);
       transition:opacity .28s ease, transform .28s ease;
     }
-    nav ul li{ width:auto; padding:0; border-bottom:none; }
-    nav ul li a{
+    #navlist li{ width:auto; padding:0; border-bottom:none; }
+    #navlist li a{
       font-family:'Fraunces', serif; font-size:1.5rem; font-weight:500;
       color:var(--ink); padding:14px 0; border-radius:0;
     }
-    nav ul li a:hover{ background:none; color:var(--moss); }
-    nav ul li.cta-item{ margin-left:0; padding-left:0; border-left:none; margin-top:24px; }
+    #navlist li a:hover{ background:none; color:var(--moss); }
+    #navlist li.cta-item{ margin-left:0; padding-left:0; border-left:none; margin-top:24px; }
     .nav-cta{ display:inline-flex; font-size:1rem !important; padding:14px 30px !important; }
   }
 
