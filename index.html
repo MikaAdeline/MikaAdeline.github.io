@@ -486,9 +486,16 @@
   .info-list{ margin-top:26px; }
   .info-list dt{ font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--moss); font-weight:600; margin-top:20px; }
   .info-list dd{ font-size:1rem; color:var(--ink); margin-top:4px; }
-  .social-row{ display:flex; gap:16px; margin-top:26px; }
-  .social-row a{ border:1px solid var(--line); padding:9px 16px; border-radius:var(--radius); font-size:0.85rem; }
-  .social-row a:hover{ border-color:var(--moss); color:var(--moss); }
+  .social-row{ display:flex; gap:12px; margin-top:26px; }
+  .social-icon{
+    display:flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border:1px solid var(--line); border-radius:50%;
+    color:var(--ink-soft); transition:border-color .2s, color .2s, background .2s;
+  }
+  .social-icon:hover{ border-color:var(--moss); color:var(--moss); background:rgba(110,123,92,0.08); }
+  .footer-social{ margin-top:10px; }
+  .footer-social .social-icon{ border-color:rgba(241,236,225,0.25); color:rgba(241,236,225,0.8); }
+  .footer-social .social-icon:hover{ border-color:var(--paper); color:var(--paper); background:rgba(241,236,225,0.08); }
 
   form{ display:flex; flex-direction:column; gap:16px; }
   .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -831,8 +838,12 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
           <dt>À domicile / en entreprise</dt><dd>Sous réserve d'un espace adapté — devis personnalisé sur demande.</dd>
         </dl>
         <div class="social-row">
-          <a href="https://www.instagram.com/AdelineShiatsu16/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://www.facebook.com/profile.php?id=61579917012503" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/AdelineShiatsu16/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61579917012503" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.5 3H12v7.5H9V15H7v-3h2v-2.3C9 7.4 10.6 6 13.2 6H15.5v2.5Z"/></svg>
+          </a>
         </div>
       </div>
       <form id="contactForm">
@@ -868,8 +879,14 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
     </div>
     <div>
       <h4>Suivre</h4>
-      <p><a href="https://www.instagram.com/AdelineShiatsu16/" target="_blank" rel="noopener">Instagram</a></p>
-      <p><a href="https://www.facebook.com/profile.php?id=61579917012503" target="_blank" rel="noopener">Facebook</a></p>
+      <div class="social-row footer-social">
+        <a href="https://www.instagram.com/AdelineShiatsu16/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61579917012503" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15.5 8.5h-2a1.5 1.5 0 0 0-1.5 1.5v2h3.4l-.5 3H12v7.5H9V15H7v-3h2v-2.3C9 7.4 10.6 6 13.2 6H15.5v2.5Z"/></svg>
+        </a>
+      </div>
       <div class="partner-logo">
         <img src="images/logo-shiatsu-france.png" alt="Shiatsu France">
         <a href="https://www.shiatsu-france.com/" target="_blank" rel="noopener">Shiatsu France</a>
