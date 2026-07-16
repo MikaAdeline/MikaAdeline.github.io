@@ -228,7 +228,6 @@
     .soin-modal-body{ padding:24px 20px 30px; }
     .btn{ width:100%; text-align:center; box-sizing:border-box; }
     .btn-row{ flex-direction:column; }
-    .avis-card blockquote{ font-size:1.15rem; }
     .diplome-grid{ gap:12px; }
     footer{ padding:40px 0 24px; }
   }
@@ -423,14 +422,31 @@
   @media (max-width:760px){ .ent-grid{ grid-template-columns:1fr; } }
 
   /* ---------- avis ---------- */
-  .avis-card{
-    max-width:640px; margin:0 auto; text-align:center;
+  /* ---------- carrousel d'avis ---------- */
+  .avis-head{ text-align:center; margin-bottom:34px; }
+  .avis-stars{ font-size:1.3rem; color:var(--clay); margin-top:10px; letter-spacing:3px; }
+  .avis-stars span{ font-family:'Work Sans', sans-serif; font-size:0.9rem; color:var(--ink-soft); letter-spacing:0; margin-left:8px; }
+  .avis-carousel{ max-width:680px; margin:0 auto; overflow:hidden; }
+  .avis-track{
+    display:flex; transition:transform .6s cubic-bezier(.4,0,.2,1);
   }
-  .avis-card blockquote{
-    font-family:'Fraunces', serif; font-style:italic; font-size:1.4rem; line-height:1.5;
+  .avis-slide{
+    flex:0 0 100%; text-align:center; padding:0 10px; box-sizing:border-box;
+  }
+  .avis-slide blockquote{
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.25rem; line-height:1.55;
     color:var(--ink);
   }
-  .avis-card cite{ display:block; margin-top:20px; font-style:normal; color:var(--ink-soft); font-size:0.9rem; }
+  .avis-slide cite{ display:block; margin-top:18px; font-style:normal; color:var(--ink-soft); font-size:0.9rem; }
+  .avis-slide .stars{ color:var(--clay); margin-left:6px; letter-spacing:2px; }
+  .avis-dots{ display:flex; justify-content:center; gap:10px; margin-top:26px; }
+  .avis-dots button{
+    width:9px; height:9px; border-radius:50%; border:none; padding:0; cursor:pointer;
+    background:var(--line); transition:background .25s, transform .25s;
+  }
+  .avis-dots button.active{ background:var(--moss); transform:scale(1.25); }
+  .avis-cta{ text-align:center; margin-top:30px; }
+  @media (max-width:600px){ .avis-slide blockquote{ font-size:1.05rem; } }
 
   /* ---------- faq ---------- */
   .faq-item{ border-top:1px solid var(--line); }
@@ -697,11 +713,40 @@
 </section>
 
 <!-- ================= AVIS ================= -->
-<section>
-  <div class="wrap avis-card">
-    <p class="eyebrow" style="justify-self:center;">Avis</p>
-    <blockquote>« Deuxième séance avec Adeline et toujours aussi bien ! Une approche très personnalisée et pertinente que je recommande. »</blockquote>
-    <cite>— Séverine</cite>
+<section id="avis">
+  <div class="wrap">
+    <div class="avis-head">
+      <p class="eyebrow">Avis Google</p>
+      <div class="avis-stars">★★★★★ <span>5/5</span></div>
+    </div>
+    <div class="avis-carousel">
+      <div class="avis-track" id="avisTrack">
+        <div class="avis-slide">
+          <blockquote>« Adeline a une approche très personnalisée, parfaitement adaptée à nos besoins. Je suis ressorti de la séance profondément détendu, avec un véritable sentiment de relâchement et de légèreté. Je compte bien refaire une séance sans hésiter !! »</blockquote>
+          <cite>— Cyril U. <span class="stars">★★★★★</span></cite>
+        </div>
+        <div class="avis-slide">
+          <blockquote>« Un très beau moment de détente. L'accueil par Adeline est chaleureux et bienveillant. Le shiatsu est doux, enveloppant et profondément relaxant. Je suis ressortie apaisée et détendue. Je recommande. »</blockquote>
+          <cite>— Marina P. <span class="stars">★★★★★</span></cite>
+        </div>
+        <div class="avis-slide">
+          <blockquote>« 2ème séance avec Adeline, un bonheur, un réalignement de soi-même, la prochaine séance le crânien trop hâte, merci pour cette prestation 🙏 »</blockquote>
+          <cite>— Christelle D. <span class="stars">★★★★★</span></cite>
+        </div>
+        <div class="avis-slide">
+          <blockquote>« J'ai passé un excellent moment avec Adeline. Sa pratique du Shiatsu est à l'écoute des besoins du corps. La séance m'a permis de relâcher les tensions. Adeline dégage une belle énergie, bienveillante et apaisante. Merci pour cette séance ! »</blockquote>
+          <cite>— Aude R. <span class="stars">★★★★★</span></cite>
+        </div>
+        <div class="avis-slide">
+          <blockquote>« Excellente praticienne, Adeline est très à l'écoute et passionnée par son métier. Le shiatsu qu'elle propose est à la fois doux et profond. Chaque séance dont j'ai pu bénéficier m'a procuré détente, meilleure énergie, et un vrai sentiment d'équilibre retrouvé. Je recommande sans hésiter ! »</blockquote>
+          <cite>— Ludivine O. <span class="stars">★★★★★</span></cite>
+        </div>
+      </div>
+      <div class="avis-dots" id="avisDots"></div>
+    </div>
+    <div class="avis-cta">
+      <a href="https://maps.app.goo.gl/FVnW4SKbviWnpGUU9" target="_blank" rel="noopener" class="btn btn-ghost">Voir tous les avis sur Google</a>
+    </div>
   </div>
 </section>
 
@@ -930,6 +975,29 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.diplome-grid img').forEach(img => fadeObserver.observe(img));
+
+  // carrousel d'avis : défilement automatique + points cliquables
+  const avisTrack = document.getElementById('avisTrack');
+  const avisSlides = avisTrack.children.length;
+  const avisDots = document.getElementById('avisDots');
+  let avisIndex = 0;
+  let avisTimer;
+
+  for(let i = 0; i < avisSlides; i++){
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Avis ' + (i+1));
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => { goToAvis(i); resetAvisTimer(); });
+    avisDots.appendChild(dot);
+  }
+  function goToAvis(i){
+    avisIndex = i;
+    avisTrack.style.transform = 'translateX(-' + (i * 100) + '%)';
+    avisDots.querySelectorAll('button').forEach((d, j) => d.classList.toggle('active', j === i));
+  }
+  function nextAvis(){ goToAvis((avisIndex + 1) % avisSlides); }
+  function resetAvisTimer(){ clearInterval(avisTimer); avisTimer = setInterval(nextAvis, 6000); }
+  resetAvisTimer();
 </script>
 
 </body>
