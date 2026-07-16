@@ -110,8 +110,7 @@
   /* ---------- header ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(241,236,225,0.94);
-    backdrop-filter:blur(8px);
+    background:var(--paper);
     border-bottom:1px solid var(--line);
     overflow:visible;
   }
@@ -332,6 +331,8 @@
   }
   .diplome-grid img{ cursor:zoom-in; }
   @media (max-width:760px){ .diplome-grid{ grid-template-columns:repeat(2,1fr); } }
+  .diplome-grid-square{ grid-template-columns:repeat(2,1fr); max-width:520px; }
+  .diplome-grid-square img{ aspect-ratio:1/1; }
   @media (prefers-reduced-motion:reduce){
     .diplome-grid img{ opacity:1; transform:none; transition:none; }
   }
@@ -599,26 +600,31 @@
       <img src="images/portfolio/diplome-2.jpg" alt="Diplôme Énergétique Chinoise">
     </div>
     <div class="cert-box cert-box-portfolio">
-      <h3>676h de formation (3 ans)</h3>
+      <h3>676h de formation (sur 3 ans) au Koho Shiatsu et Energétique Chinoise, dont :</h3>
       <ul>
-        <li><b>Anatomie et Physionomie</b> — Fabienne Demillian, Infirmière, spécialiste Koho Shiatsu</li>
-        <li><b>Anatomie Palpatoire</b> — Guillaume Reynard, Ostéopathe DO</li>
-        <li><b>Réflexologie plantaire</b> — Nadine Paillé, Praticienne Shiatsu et Réflexologie</li>
-        <li><b>Shiatsu en oncologie</b> — Magali Marchet, Infirmière en oncologie</li>
-        <li><b>Gynécologie et MTC</b> — Elsa Dou, Sage-femme acupunctrice</li>
-        <li><b>Thérapie manuelle</b> — Guillaume Reynard, Ostéopathe DO</li>
-        <li><b>Heddo Massaji, Kinsey Seitei 1&2</b> — Anne Plamondon</li>
-        <li><b>Massage à l'huile & ventouses</b> — Isabeau Bloy</li>
-        <li><b>Accompagnement des aidants</b> — Formation complémentaire</li>
+        <li>Anatomie et Physionomie (Fabienne Demillian, Infirmière et Spécialiste Koho Shiatsu)</li>
+        <li>Anatomie Palpatoire ( Guillaume Reynard, Ostéopathe DO)</li>
+        <li>Initiation à la réflexologie plantaire ( Nadine Paillé, Praticienne Shiatsu et Réflexologie)</li>
+        <li>Shiatsu en oncologie ( Magali Marchet, Infirmière en oncologie et spécialiste en Koho Shiatsu)</li>
+        <li>Gynécologie et Médecine Traditionnelle Chinoise ( Elsa DOU, Sage femme acupunctrice)</li>
+        <li>Initiation à la Thérapie manuelle ( Guillaume Reynard, Ostéopathe DO)</li>
       </ul>
     </div>
 
     <h3 class="portfolio-subhead">Formations complémentaires</h3>
-    <div class="diplome-grid">
+    <div class="diplome-grid diplome-grid-square">
       <img src="images/portfolio/formation-1.jpg" alt="Formation Heddo Massaji">
       <img src="images/portfolio/formation-2.jpg" alt="Formation Kinsey Seitei">
       <img src="images/portfolio/formation-3.jpg" alt="Formation massage à l'huile et ventouses">
       <img src="images/portfolio/formation-4.jpg" alt="Formation Shiatsu en oncologie">
+    </div>
+    <div class="cert-box cert-box-portfolio">
+      <ul>
+        <li>Heddo Massajï (Shiatsu crânien) , Anne Plamondon- Spécialiste en Shiatsu</li>
+        <li>Kinsey Seitei niveau 1 et 2 , Anne Plamondon - Spécialiste en Shiatsu</li>
+        <li>Massage du dos à l'huile et pose de ventouses - Isabeau Bloy- Spécialiste en Shiatsu</li>
+        <li style="font-style:italic;">et d'autres à venir ...</li>
+      </ul>
     </div>
 
     <h3 class="portfolio-subhead">Accompagnement des aidants</h3>
