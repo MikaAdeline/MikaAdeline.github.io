@@ -170,28 +170,67 @@
     .nav{ height:50px; }
     .brand-logo{ height:78px; }
     .burger{display:block;}
+
+    #navOverlay{
+      position:fixed; inset:50px 0 0 0; z-index:54;
+      background:rgba(30,44,61,0.35);
+      opacity:0; visibility:hidden;
+      transition:opacity .25s ease, visibility 0s linear .25s;
+    }
+    #navOverlay.open{
+      opacity:1; visibility:visible;
+      transition:opacity .25s ease;
+    }
+
     #navlist{
-      position:fixed; inset:0; z-index:55;
+      position:fixed; top:50px; left:0; right:0; z-index:55;
       background:var(--paper);
-      display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-      gap:6px; overflow-y:auto;
-      padding:80px 24px 40px;
-      -webkit-overflow-scrolling:touch;
-      opacity:0; visibility:hidden; transform:translateY(-8px);
-      transition:opacity .28s ease, transform .28s ease, visibility 0s linear .28s;
+      box-shadow:0 12px 30px rgba(30,44,61,0.15);
+      border-bottom:1px solid var(--line);
+      display:flex; flex-direction:column; align-items:stretch;
+      gap:0; padding:6px 14px 16px;
+      transform:translateY(-105%);
+      transition:transform .28s cubic-bezier(.4,0,.2,1);
     }
     #navlist.open{
-      opacity:1; visibility:visible; transform:translateY(0);
-      transition:opacity .28s ease, transform .28s ease;
+      transform:translateY(0);
     }
-    #navlist li{ width:auto; padding:0; border-bottom:none; }
+    #navlist li{ width:100%; padding:0; border-bottom:none; }
     #navlist li a{
-      font-family:'Fraunces', serif; font-size:1.5rem; font-weight:500;
-      color:var(--ink); padding:14px 0; border-radius:0;
+      display:block; width:100%; text-align:center;
+      font-family:'Work Sans', sans-serif; font-size:1rem; font-weight:500;
+      color:var(--ink); padding:13px 16px; border-radius:10px;
+      border-bottom:1px solid var(--line);
     }
-    #navlist li a:hover{ background:none; color:var(--moss); }
-    #navlist li.cta-item{ margin-left:0; padding-left:0; border-left:none; margin-top:24px; }
-    .nav-cta{ display:inline-flex; font-size:1rem !important; padding:14px 30px !important; }
+    #navlist li:nth-last-child(2) a{ border-bottom:none; }
+    #navlist li a:hover, #navlist li a:active{ background:rgba(46,63,86,0.06); color:var(--indigo); }
+    #navlist li.cta-item{
+      margin:12px 0 0; padding-left:0; border-left:none;
+    }
+    #navlist .nav-cta{
+      display:flex; justify-content:center;
+      font-size:1rem !important; padding:14px 30px !important;
+      width:100%; box-sizing:border-box;
+    }
+  }
+
+  /* petits écrans : réduire les espacements et tailles pour s'adapter au mobile */
+  @media (max-width:600px){
+    .wrap{ padding:0 18px; }
+    section{ padding:56px 0; }
+    .hero{ padding:40px 0 36px !important; }
+    .hero .wrap{ grid-template-columns:1fr; gap:32px; }
+    .hero h1{ font-size:clamp(1.7rem, 7.5vw, 2.2rem); }
+    .hero p{ font-size:0.98rem; }
+    .section-head{ margin-bottom:32px; }
+    .section-head h2{ font-size:clamp(1.45rem, 6vw, 1.9rem); }
+    .about-grid, .contact-grid{ gap:36px; }
+    .soin-modal-body{ padding:24px 20px 30px; }
+    .btn{ width:100%; text-align:center; box-sizing:border-box; }
+    .btn-row{ flex-direction:column; }
+    .avis-card blockquote{ font-size:1.15rem; }
+    .diplome-grid{ gap:12px; }
+    footer{ padding:40px 0 24px; }
   }
 
 
@@ -281,10 +320,20 @@
   }
   .diplome-grid img{
     width:100%; aspect-ratio:3/4; object-fit:contain;
-    border-radius:var(--radius); border:1px solid var(--line);
-    background:var(--paper);
+    border-radius:14px; border:none;
+    background:transparent;
+    -webkit-mask-image:radial-gradient(ellipse 95% 95% at center, black 68%, transparent 100%);
+    mask-image:radial-gradient(ellipse 95% 95% at center, black 68%, transparent 100%);
+    opacity:0; transform:translateY(18px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .diplome-grid img.visible{
+    opacity:1; transform:translateY(0);
   }
   @media (max-width:760px){ .diplome-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (prefers-reduced-motion:reduce){
+    .diplome-grid img{ opacity:1; transform:none; transition:none; }
+  }
 
   /* ---------- about ---------- */
   #apropos{ background:var(--paper-deep); }
@@ -440,6 +489,7 @@
   <div class="wrap nav">
     <a href="#accueil" class="brand"><img src="images/logo-empreinte.png" alt="" class="brand-logo">Adeline <span>Shiatsu</span></a>
     <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+    <div id="navOverlay"></div>
     <ul id="navlist">
       <li><a href="#apropos">À propos</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
@@ -537,6 +587,9 @@
     </div>
 
     <h3 class="portfolio-subhead">Accompagnement des aidants</h3>
+    <p style="color:var(--ink-soft); max-width:62ch; margin-bottom:24px;">Un jeudi par mois, j'ai le plaisir d'être à La Maison de LEA pour proposer des séances de shiatsu aux aidants. Un moment de pause, de douceur et de ressourcement rien que pour eux.</p>
+    <p style="color:var(--ink-soft); max-width:62ch; margin-bottom:24px;">Être aidant, c'est donner énormément de soi… mais il est essentiel aussi de prendre soin de soi pour continuer à accompagner avec force et bienveillance. Ces séances sont là pour relâcher les tensions, retrouver souffle et énergie, et se reconnecter à soi.</p>
+    <p style="color:var(--moss); font-style:italic; max-width:62ch; margin-bottom:28px;">Si vous êtes aidant, sachez que ces moments vous sont dédiés. N'hésitez pas à venir, vous offrir cette parenthèse peut tout changer.</p>
     <div class="diplome-grid">
       <img src="images/portfolio/aidants-1.jpg" alt="Formation accompagnement des aidants">
       <img src="images/portfolio/aidants-2.jpg" alt="Formation accompagnement des aidants">
@@ -824,18 +877,29 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
   track.innerHTML += track.innerHTML;
 
   // close mobile nav on link click
-  // menu mobile : bouton burger animé
+  // menu mobile : panneau glissant + fond assombri
   const burgerBtn = document.getElementById('burgerBtn');
   const navlist = document.getElementById('navlist');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openMenu(){
+    burgerBtn.classList.add('open');
+    navlist.classList.add('open');
+    navOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    burgerBtn.classList.remove('open');
+    navlist.classList.remove('open');
+    navOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
   burgerBtn.addEventListener('click', () => {
-    burgerBtn.classList.toggle('open');
-    navlist.classList.toggle('open');
+    navlist.classList.contains('open') ? closeMenu() : openMenu();
   });
+  navOverlay.addEventListener('click', closeMenu);
   document.querySelectorAll('#navlist a').forEach(a=>{
-    a.addEventListener('click', ()=> {
-      navlist.classList.remove('open');
-      burgerBtn.classList.remove('open');
-    });
+    a.addEventListener('click', closeMenu);
   });
 
   // contact form (front-end only — pas de backend branché)
@@ -855,6 +919,17 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
       }
     });
   });
+
+  // apparition en fondu des images du portfolio au défilement
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.diplome-grid img').forEach(img => fadeObserver.observe(img));
 </script>
 
 </body>
