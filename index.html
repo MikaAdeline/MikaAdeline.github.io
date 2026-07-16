@@ -847,6 +847,10 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
         </div>
       </div>
       <form id="contactForm">
+        <input type="hidden" name="access_key" value="4d738ba5-6882-4d56-b837-a97c0aa1187b">
+        <input type="hidden" name="subject" value="Nouvelle demande de contact — Adeline Shiatsu">
+        <input type="hidden" name="from_name" value="Site adelineshiatsu16.fr">
+        <input type="checkbox" name="botcheck" style="display:none;">
         <div class="field-row">
           <div><label for="prenom">Prénom</label><input id="prenom" name="prenom" required></div>
           <div><label for="nom">Nom</label><input id="nom" name="nom" required></div>
@@ -859,8 +863,8 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Motif de votre venue…" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-        <p id="formNote" style="font-size:0.85rem; color:var(--ink-soft); display:none;">Merci pour votre envoi — j'y répondrai rapidement.</p>
+        <button type="submit" class="btn btn-primary" id="formSubmitBtn">Envoyer</button>
+        <p id="formNote" style="font-size:0.85rem; color:var(--ink-soft); display:none;"></p>
       </form>
     </div>
   </div>
@@ -996,11 +1000,41 @@ Un shiatsu se reçoit habillé, avec des vêtements souples (pas de jeans, ni de
     a.addEventListener('click', closeMenu);
   });
 
-  // contact form (front-end only — pas de backend branché)
+  // contact form — envoi réel via Web3Forms
   document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
-    document.getElementById('formNote').style.display = 'block';
-    this.reset();
+    const form = this;
+    const btn = document.getElementById('formSubmitBtn');
+    const note = document.getElementById('formNote');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success){
+        note.textContent = "Merci pour votre envoi — j'y répondrai rapidement.";
+        note.style.color = 'var(--moss)';
+        form.reset();
+      } else {
+        note.textContent = "Une erreur est survenue. Merci de me contacter directement par téléphone ou email.";
+        note.style.color = '#b3453a';
+      }
+      note.style.display = 'block';
+    })
+    .catch(() => {
+      note.textContent = "Une erreur est survenue. Merci de me contacter directement par téléphone ou email.";
+      note.style.color = '#b3453a';
+      note.style.display = 'block';
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.textContent = 'Envoyer';
+    });
   });
 
   // only one FAQ item open at a time
